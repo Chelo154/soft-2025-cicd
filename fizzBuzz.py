@@ -10,7 +10,7 @@ class Solution:
 
             result_list.append(result)
 
-        return result_list
+        return []
 
 
 def main() -> None:
