@@ -36,7 +36,7 @@ jobs:
         run: uv run black --check .
 
       - name: Verifico que los tests pasen
-        run: uv run pytest
+        run: uv run pytest .
 
 
 
