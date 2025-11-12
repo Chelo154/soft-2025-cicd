@@ -1,0 +1,43 @@
+name: Integracion Continua en un PR
+
+
+#Desencadenadores -> Triggers
+on:
+  #Ante un Pull request a la rama de develop
+  pull_request:
+    branches:
+      - develop
+
+  #Cuando yo lo invoque manualmente
+  workflow_dispatch:
+
+
+jobs:
+
+  verificar_formato_y_testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: No hago nada solo saludo
+        run: echo "HOLA MUNDO"
+
+      - name: Instalo mis dependencias
+        run: uv sync 
+
+      - name: Verifico que mi app tenga formato valido
+        run: uv run black --check .
+
+      - name: Verifico que los tests pasen
+        run: uv run pytest
+
+
+
+
